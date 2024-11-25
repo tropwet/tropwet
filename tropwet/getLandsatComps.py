@@ -15,25 +15,25 @@ def getLandsatComposite(
                     .filterBounds(geometry)\
                     .filter(ee.Filter.calendarRange(first_year,last_year,'year'))\
                     .filter(ee.Filter.calendarRange(first_month,last_month,'month'))
-  ls9CloudMasked = landsat9Collection.map(cloudMaskLSOLI)
+  ls9CloudMasked = landsat9Collection.map(cloudMasking.cloudMaskLSOLI)
   
   landsat8Collection = ee.ImageCollection("LANDSAT/LC08/C02/T1_L2")\
                     .filterBounds(geometry)\
                     .filter(ee.Filter.calendarRange(first_year,last_year,'year'))\
                     .filter(ee.Filter.calendarRange(first_month,last_month,'month'))
-  ls8CloudMasked = landsat8Collection.map(cloudMaskLSOLI)
+  ls8CloudMasked = landsat8Collection.map(cloudMasking.cloudMaskLSOLI)
   
   landsat7Collection = ee.ImageCollection("LANDSAT/LE07/C02/T1_L2")\
                     .filterBounds(geometry)\
                     .filter(ee.Filter.calendarRange(first_year,last_year,'year'))\
                     .filter(ee.Filter.calendarRange(first_month,last_month,'month'))
-  ls7CloudMasked = landsat7Collection.map(cloudMaskLSTM)
+  ls7CloudMasked = landsat7Collection.map(cloudMasking.cloudMaskLSTM)
   
   landsat5Collection = ee.ImageCollection("LANDSAT/LT05/C02/T1_L2")\
                     .filterBounds(geometry)\
                     .filter(ee.Filter.calendarRange(first_year,last_year,'year'))\
                     .filter(ee.Filter.calendarRange(first_month,last_month,'month'))
-  ls5CloudMasked = landsat5Collection.map(cloudMaskLSTM)
+  ls5CloudMasked = landsat5Collection.map(cloudMasking.cloudMaskLSTM)
   
   #### Match Case for Composite ####
   
