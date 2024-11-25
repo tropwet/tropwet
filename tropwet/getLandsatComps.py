@@ -7,7 +7,7 @@ def getLandsatComposite(
   geometry:,
 ):
 
-  def bitwiseExtract(value, fromBit, toBit):
+def bitwiseExtract(value, fromBit, toBit):
   if toBit == None:
     toBit = fromBit
   maskSize = ee.Number(1).add(toBit).subtract(fromBit)
