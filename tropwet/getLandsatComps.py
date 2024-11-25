@@ -10,6 +10,10 @@ def getLandsatComposite(
   last_year: int,
   landsats: list = [8,9]
 ):
+
+  parScale = 16
+  tileScale = 16
+  resolution = 30
   
   landsat9Collection = ee.ImageCollection("LANDSAT/LC09/C02/T1_L2")\
                     .filterBounds(geometry)\
