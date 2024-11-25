@@ -1,3 +1,5 @@
+import ee
+
 def getLandsatComposite(
   geometry,
   first_month: int,
