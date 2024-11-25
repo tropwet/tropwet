@@ -1,4 +1,6 @@
 import ee
+from tropwet import cloudMasking
+
 
 def getLandsatComposite(
   geometry,
