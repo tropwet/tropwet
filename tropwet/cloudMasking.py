@@ -1,3 +1,5 @@
+import ee
+
 def bitwiseExtract(value, fromBit, toBit):
   if toBit == None:
     toBit = fromBit
