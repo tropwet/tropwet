@@ -1,6 +1,6 @@
 import ee
 
-def unmix(img,endmembers,sumToOne:bool=True, nonNegative:bool=True,scaleFactor:int=10000):
+def unmix(img,endmembers,sumToOne:bool=True, nonNegative:bool=True,scaleFactor:int=100):
   unmixedImage = median_composite.unmix(endmembers,True,True);
   bandNames2 = ['water', 'veg', 'bare','burn'];
   unmixedImage = unmixedImage.rename(bandNames2);
