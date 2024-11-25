@@ -1,10 +1,10 @@
 def getLandsatComposite(
+  geometry,
   first_month: int,
   last_month: int,
   first_year: int,
   last_year: int,
-  landsats: list = [8,9],
-  geometry,
+  landsats: list = [8,9]
 ):
   
   landsat9Collection = ee.ImageCollection("LANDSAT/LC09/C02/T1_L2")\
