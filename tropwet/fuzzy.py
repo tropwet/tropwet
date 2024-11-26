@@ -13,5 +13,11 @@ def fuzzy_lt(img,low_bound,up_bound):
   fuzzyOut = fuzzyOut.where(img.gt(up_bound),0)
   return ee.Image(fuzzyOut).float()
 
+def fuzzy_and(imgCol):
+  minImg = ee.ImageCollection(imgCol).min()
+  return ee.Image(minImg).float()
 
+def fuzzy_or(imgCol):
+  maxImg = ee.ImageCollection(imgCol).max()
+  return ee.Image(maxImg).float()
 
