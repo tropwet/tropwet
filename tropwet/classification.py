@@ -6,10 +6,10 @@ def fuzzyClass(img,useBurnWaterMask:bool=True,useForestMask:bool=True):
 
   unmixImg = img
 
-  waterFraction = ee.Image(unmixImg.select('b1')).float()
-  vegFraction = ee.Image(unmixImg.select('b2')).float()
-  bareFraction = ee.Image(unmixImg.select('b3')).float()
-  burnFraction = ee.Image(unmixImg.select('b4')).float()
+  waterFraction = ee.Image(unmixImg.select('water')).float()
+  vegFraction = ee.Image(unmixImg.select('veg')).float()
+  bareFraction = ee.Image(unmixImg.select('bare')).float()
+  burnFraction = ee.Image(unmixImg.select('burn')).float()
   
   burnWaterMask = burnFraction.lt(waterFraction)
   
