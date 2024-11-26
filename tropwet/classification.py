@@ -13,8 +13,10 @@ def fuzzyClass(img,useBurnWaterMask:bool=True,useForestMask:bool=True):
   
   burnWaterMask = burnFraction.lt(waterFraction)
   
-  slopeArr = ee.Image('projects/ee-gregoryoakessentone/assets/Slope_Tile-34_Re').float()
-  handArr = ee.Image('projects/ee-gregoryoakessentone/assets/Hand_Tile-34_Re').float()
+  dem = ee.Image('MERIT/Hydro/v1_0_1').select('elv')
+  slopeArr = ee.Image(ee.Terrain.slope(dem)).float()
+  
+  handArr = ee.Image(ee.Image('MERIT/Hydro/v1_0_1').select('hnd')).float()
   
   wvSumImg = ee.Image(waterFraction.add(vegFraction)).float()
   wbSumImg = ee.Image(waterFraction.add(bareFraction)).float()
