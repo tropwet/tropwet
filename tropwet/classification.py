@@ -25,7 +25,9 @@ def fuzzyClass(img,useBurnWaterMask:bool=True,useForestMask:bool=True):
   ow1_water_frac = ee.Image(fuzzy.fuzzy_gt(waterFraction, low_bound=65, up_bound=80)).float()
   ow1_slope = ee.Image(fuzzy.fuzzy_lt(slopeArr, low_bound=2, up_bound=4)).float()
   ow1_hand = ee.Image(fuzzy.fuzzy_lt(handArr, low_bound=25, up_bound=35)).float()
-  ow1 = ee.Image(fuzzy.fuzzy_and(ee.ImageCollection.fromImages([ee.Image(ow1_water_frac), ee.Image(ow1_slope), ee.Image(ow1_hand)]))).float()
+  #ow1 = ee.Image(fuzzy.fuzzy_and(ee.ImageCollection.fromImages([ee.Image(ow1_water_frac), ee.Image(ow1_slope), ee.Image(ow1_hand)]))).float()
+
+  ow1 = ee.Image(ow1_water_frac.min(ow1_slope).min(ow1_hand))
   
   #### Flooded Veg ####
   # ]efv = np.where(wvSumImg>=70,np.where((vegFraction >= 25) & (vegFraction < 75),np.where((waterFraction >= 25) & (waterFraction < 75),np.where(slopeArr<2.5,1,0),0),0),0)
