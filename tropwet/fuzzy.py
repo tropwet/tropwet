@@ -1,5 +1,5 @@
 import ee
-import geemap.core as geemap
+
 
 def fuzzy_gt(img,low_bound,up_bound):
   fuzzyOut = ee.Image(img.subtract(low_bound)).multiply(ee.Number(1).divide(up_bound-low_bound))
